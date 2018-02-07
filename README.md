@@ -1,5 +1,8 @@
-# Hello World Example
+# A minimum esp32 http Web Server demo
 
-Starts a FreeRTOS task to print "Hello World"
+**With GPIO control, static IP address, Wifi connection state. Implemented in ESP-IDF framework.** 
 
-See the README.md file in the upper level 'examples' directory for more information about examples.
+![demo running](https://github.com/qienhuang/esp32_mini_webserver_gpio/raw/master/Snapshoot/demo_run.JPG)
+
+![demo_webpage](https://github.com/qienhuang/esp32_mini_webserver_gpio/raw/master/Snapshoot/demo_web_ui.JPG)
+
