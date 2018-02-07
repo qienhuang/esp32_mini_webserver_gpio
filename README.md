@@ -1,2 +1,5 @@
-# esp32_mini_webserver_gpio
-A minimum esp32 http Web Server, with GPIO control, static IP address, Wifi connection state. Implemented in ESP-IDF framework.
+# Hello World Example
+
+Starts a FreeRTOS task to print "Hello World"
+
+See the README.md file in the upper level 'examples' directory for more information about examples.
