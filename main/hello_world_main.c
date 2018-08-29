@@ -42,6 +42,10 @@ int LED_PIN = 25;
 const static char http_html_hdr[] =
 		"HTTP/1.1 200 OK\r\nContent-type: text/html\r\n\r\n";
 
+// Build 404 header
+const static char http_404_hdr[] =
+"HTTP/1.1 404 Not Found\r\nContent-type: text/html\r\n\r\n";
+
 // Build http body
 const static char http_index_hml[] =
 		"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\
@@ -212,23 +216,40 @@ static void http_server_netconn_serve(struct netconn *conn) {
 			 * subtract 1 from the size, since we dont send the \0 in the string
 			 * NETCONN_NOCOPY: our data is const static, so no need to copy it
 			 */
+			bool bNotFound = false;
 			if(path != NULL)
 			{
 
 				if (strcmp("/high",path)==0) {
 					gpio_set_level(LED_PIN,1);
 				}
-				if (strcmp("/low",path)==0) {
+				else if (strcmp("/low",path)==0) {
 					gpio_set_level(LED_PIN,0);
 				}
-
+				else if (strcmp("/",path)==0)
+				{
+				
+				}
+				else
+				{
+					bNotFound = true;	// 404 Not found
+				}
+				
 				free(path);
 				path=NULL;
 			}
 
 			// Send HTTP response header
-			netconn_write(conn, http_html_hdr, sizeof(http_html_hdr) - 1,
+			if(bNotFound)
+			{
+				netconn_write(conn, http_404_hdr, sizeof(http_404_hdr) - 1,
 					NETCONN_NOCOPY);
+			}
+			else
+			{
+				netconn_write(conn, http_html_hdr, sizeof(http_html_hdr) - 1,
+					NETCONN_NOCOPY);
+			}
 
 			// Send HTML content
 			netconn_write(conn, http_index_hml, sizeof(http_index_hml) - 1,
