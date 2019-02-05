@@ -2,6 +2,7 @@
 
 **With GPIO control, static IP address, Wifi connection status. Implemented in ESP-IDF framework.** 
 
+(To see main code from [here](https://github.com/qienhuang/esp32_mini_webserver_gpio/blob/master/main/hello_world_main.c))
 
 ![demo_webpage](https://github.com/qienhuang/esp32_mini_webserver_gpio/raw/master/Snapshoot/ui.png)
 
