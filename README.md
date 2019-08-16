@@ -1,4 +1,4 @@
-# A minimum esp32/esp-idf http Web Server example
+# A minimal esp32/esp-idf http Web Server example/demo
 
 **With GPIO control, static IP address, Wifi connection status. Implemented in ESP-IDF framework.** 
 
